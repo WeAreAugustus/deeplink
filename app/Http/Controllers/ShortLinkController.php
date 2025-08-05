@@ -74,8 +74,10 @@ class ShortLinkController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Successfully created short link.',
-            'short_url' => url($code),
-            'code' => $code,
+            'data' => [
+                'short_url' => url($code),
+                'code' => $code,
+            ]
         ]);
     }
     public function redirect(Request $request, $code)
