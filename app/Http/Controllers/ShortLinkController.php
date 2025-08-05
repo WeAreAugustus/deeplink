@@ -108,7 +108,7 @@ class ShortLinkController extends Controller
         }
         return response()->json([
                 'success' => true,
-                'message' => 'Successfully created short link.',
+                'message' => 'Successfully code found.',
                 'data' => json_decode($link->details, true),
             ]);
     }
