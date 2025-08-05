@@ -1,7 +1,7 @@
 pipeline {
     agent {
         node {
-            label 'smashi-be-api-prod'
+            label 'smashi-staging'
         }
     }
 
