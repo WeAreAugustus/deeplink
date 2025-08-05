@@ -15,7 +15,8 @@ pipeline {
         DB_PORT = '3306'
         DB_PASSWORD = 'zE5MCRA23uOw4m9Y6hLce3iBD'
         DB_USERNAME = 'root'
-        DB_NAME = 'la_deeplink'
+        DB_DATABASE='la_deeplink'
+
     }
 
     stages {
@@ -50,7 +51,7 @@ pipeline {
                         DB_HOST=${DB_HOST}
                         DB_PASSWORD=${DB_PASSWORD}
                         DB_USERNAME=${DB_USERNAME}
-                        DB_NAME=${DB_NAME}
+                        DB_DATABASE=${DB_DATABASE}
                         DB_PORT=${DB_PORT}
                         APP_DEBUG=true 
                         
