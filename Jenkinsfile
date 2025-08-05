@@ -54,6 +54,7 @@ pipeline {
                         DB_DATABASE=${DB_DATABASE}
                         DB_PORT=${DB_PORT}
                         APP_DEBUG=true 
+                        APP_ENV='production'
                         
 
                     """
