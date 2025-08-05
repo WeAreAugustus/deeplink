@@ -10,8 +10,12 @@ class ShortLink extends Model
     use HasFactory;
     protected $fillable = [
         'code',
-        'android_link',
-        'ios_link',
-        'web_link',
+        'details',
+        'web',
+        'site_id',
     ];
+    public function site()
+    {
+        return $this->belongsTo(Site::class);
+    }
 }

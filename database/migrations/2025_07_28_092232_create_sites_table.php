@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('short_links', function (Blueprint $table) {
+        Schema::create('sites', function (Blueprint $table) {
             $table->id();
-            $table->string('code')->unique();
-            $table->mediumText('details')->nullable();
-            $table->string('web')->nullable();
-            $table->foreignId('site_id')->constrained('sites')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('name')->unique();
+            $table->string('android_link');
+            $table->string('ios_link');
+            $table->string('web_link');
+            $table->string('api_key')->nullable();
+            $table->boolean('is_active')->default(1);
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('short_links');
+        Schema::dropIfExists('sites');
     }
 };
