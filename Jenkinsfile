@@ -13,7 +13,7 @@ pipeline {
         DB_HOST = '15.184.142.230'    
         DB_PORT = '3306'
         DB_PASSWORD = 'zE5MCRA23uOw4m9Y6hLce3iBD'
-        DB_USER = 'root'
+        DB_USERNAME = 'root'
         DB_NAME = 'la_deeplink'
     }
 
