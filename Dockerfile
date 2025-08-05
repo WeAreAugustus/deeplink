@@ -26,7 +26,14 @@ COPY . /var/www/html
 # Install Composer dependencies
 RUN composer install --no-dev --optimize-autoloader
 
+# Clear Laravel cache (IMPORTANT!)
+RUN php artisan config:clear
+
 # Set permissions
 RUN chown -R www-data:www-data /var/www/html && chmod -R 755 /var/www/html
 
+# Expose the port Apache will run on
 EXPOSE 5044
+
+# Start Apache
+CMD ["apache2-foreground"]
