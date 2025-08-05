@@ -51,7 +51,7 @@ pipeline {
                         DB_NAME=${DB_NAME}
                         DB_PORT=${DB_PORT}
                         APP_DEBUG=true 
-                        dd(env('DB_DATABASE'));
+                        
 
                     """
                     echo ".env file created successfully."
