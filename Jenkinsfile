@@ -81,8 +81,7 @@ pipeline {
                     -p 5048:80\\
                     --env-file .env \\
                     --restart unless-stopped \\
-                    -v /home/ubuntu/.well-known:/var/www/html/public/.well-known:ro \
-                    deeplink \\
+                    -v /home/ubuntu/.well-known:/var/www/html/public/.well-known:ro  \\
                     ${DOCKER_TAG} 
                 """
             }
