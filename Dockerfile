@@ -28,7 +28,7 @@ RUN composer install --no-dev --optimize-autoloader
 
 # Clear Laravel cache (IMPORTANT!)
 RUN php artisan config:clear
-
+RUN rm -f bootstrap/cache/config.php
 # Set permissions
 RUN chown -R www-data:www-data /var/www/html && chmod -R 755 /var/www/html
 
