@@ -102,7 +102,10 @@ class ShortLinkController extends Controller
     }
     public function details(Request $request, $code)
     {
-        $link = ShortLink::where('code', $code)->firstOrFail();
+        $link = ShortLink::where('code', $code)->first();
+        if (!$link) {
+            return response()->json(['success' => false,'message' => 'Code not found'], 404);
+        }
         return response()->json(json_decode($link->details, true));
     }
 
