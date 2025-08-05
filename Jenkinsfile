@@ -50,6 +50,7 @@ pipeline {
                         DB_USERNAME=${DB_USERNAME}
                         DB_NAME=${DB_NAME}
                         DB_PORT=${DB_PORT}
+                        APP_DEBUG=true 
                     """
                     echo ".env file created successfully."
                 }
