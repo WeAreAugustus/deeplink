@@ -10,6 +10,7 @@ pipeline {
         APP_NAME = 'deeplink'
         APP_VERSION = '1.0.0'
         DOCKER_TAG = "${APP_NAME}:${APP_VERSION}"
+        DB_CONNECTION='mysql'
         DB_HOST = '15.184.142.230'    
         DB_PORT = '3306'
         DB_PASSWORD = 'zE5MCRA23uOw4m9Y6hLce3iBD'
@@ -45,6 +46,7 @@ pipeline {
                         APP_NAME=${APP_NAME}
                         APP_VERSION=${APP_VERSION}
                         DOCKER_TAG=${DOCKER_TAG}
+                        DB_CONNECTION=${DB_CONNECTION}
                         DB_HOST=${DB_HOST}
                         DB_PASSWORD=${DB_PASSWORD}
                         DB_USERNAME=${DB_USERNAME}
