@@ -47,7 +47,7 @@ pipeline {
                         DOCKER_TAG=${DOCKER_TAG}
                         DB_HOST=${DB_HOST}
                         DB_PASSWORD=${DB_PASSWORD}
-                        DB_USER=${DB_USER}
+                        DB_USERNAME=${DB_USERNAME}
                         DB_NAME=${DB_NAME}
                         DB_PORT=${DB_PORT}
                     """
