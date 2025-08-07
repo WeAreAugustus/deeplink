@@ -41,6 +41,7 @@
             background-color: #495057;
         }
     </style>
+    @stack('styles')
 </head>
 <body>
 
@@ -67,6 +68,6 @@
 
     @yield('content')
 </div>
-
+@stack('scripts')
 </body>
 </html>
