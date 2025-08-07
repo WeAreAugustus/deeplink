@@ -50,7 +50,7 @@ class SiteController extends Controller
         ]);
         $validated['is_active'] = $request->has('is_active');
         $site->update($validated);
-        return redirect()->route('dashboard.sites.index')->with('success', 'Site updated successfully.');
+        return redirect()->route('sites.index')->with('success', 'Site updated successfully.');
     }
 }
 
