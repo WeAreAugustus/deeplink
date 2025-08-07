@@ -26,7 +26,7 @@ Route::post('/logout', [UserController::class, 'destroy'])
     ->name('logout');
 Route::middleware(['auth'])->group(function () {
     Route::get('/', fn() => redirect()->route('sites.index'));
-    Route::resource('sites', SiteController::class)->only(['index', 'create', 'store']);
+    Route::resource('sites', SiteController::class);
     Route::resource('short-links', ShortLinkController::class)->only(['index', 'create', 'store', 'destroy']);
 });
 Route::get('/{code}', [ShortLinkController::class, 'redirect'])->name('short-links.redirect');

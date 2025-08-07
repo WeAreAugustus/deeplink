@@ -31,5 +31,26 @@ class SiteController extends Controller
         Site::create($request->all());
         return redirect()->route('sites.index')->with('success', 'Site created!');
     }
+    public function edit($id)
+    {
+        $site = Site::findOrFail($id);
+        return view('sites.edit', compact('site'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $site = Site::findOrFail($id);
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'android_link' => 'nullable|url',
+            'ios_link' => 'nullable|url',
+            'web_link' => 'nullable|url',
+            'api_key' => 'required|string|max:255',
+            'is_active' => 'boolean',
+        ]);
+        $validated['is_active'] = $request->has('is_active');
+        $site->update($validated);
+        return redirect()->route('sites.index')->with('success', 'Site updated successfully.');
+    }
 }
 

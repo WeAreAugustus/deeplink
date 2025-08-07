@@ -28,6 +28,8 @@
             flex-grow: 1;
             padding: 20px;
             background: #f8f9fa;
+            overflow-y: auto;   /* Enables vertical scroll */
+            height: 100vh;       /* Or use a limited height */
         }
         .logout-button {
             background: none;

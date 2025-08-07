@@ -11,6 +11,7 @@
             <th>Web</th>
             <th>Key</th>
             <th>Status</th>
+            <th>Actions</th>
         </tr>
         </thead>
         <tbody>
@@ -25,6 +26,9 @@
                         ******
                     </a></td>
                 <td>{{ $site->is_active ? '✅ Active' : '❌ Inactive' }}</td>
+                <td>
+                    <a href="{{ route('sites.edit', $site->id) }}" class="btn btn-sm btn-primary">✏️ Edit</a>
+                </td>
             </tr>
         @endforeach
         </tbody>
