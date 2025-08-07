@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+@push('styles')
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+@endpush
+
 @section('content')
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h2>Short Links</h2>
@@ -10,7 +15,7 @@
         <div class="alert alert-info">No short links available.</div>
     @else
         <div class="table-responsive">
-            <table class="table table-striped align-middle">
+            <table class="table table-striped align-middle" id="shortLinksTable">
                 <thead class="table-dark">
                 <tr>
                     <th>Code</th>
@@ -42,7 +47,9 @@
                         </td>
                         <td>
                             @if($link->web)
-                                <a href="{{ $link->site->web_link . $link->web }}" target="_blank">{{ $link->site->web_link . $link->web }}</a>
+                                <a href="{{ $link->site->web_link . $link->web }}" target="_blank">
+                                    {{ $link->site->web_link . $link->web }}
+                                </a>
                             @else
                                 —
                             @endif
@@ -58,3 +65,24 @@
         </div>
     @endif
 @endsection
+
+@push('scripts')
+    <!-- jQuery (required for DataTables) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+    <!-- Initialize DataTables -->
+    <script>
+        $(document).ready(function () {
+            $('#shortLinksTable').DataTable({
+                pageLength: 10,
+                order: [],
+                columnDefs: [
+                    { orderable: false, targets: [1] } // Disable sort on "Copy Link"
+                ]
+            });
+        });
+    </script>
+@endpush
