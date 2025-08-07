@@ -29,12 +29,12 @@ class SiteController extends Controller
         ]);
 
         Site::create($request->all());
-        return redirect()->route('sites.index')->with('success', 'Site created!');
+        return redirect()->route('dashboard.sites.index')->with('success', 'Site created!');
     }
     public function edit($id)
     {
         $site = Site::findOrFail($id);
-        return view('sites.edit', compact('site'));
+        return view('dashboard.sites.edit', compact('site'));
     }
 
     public function update(Request $request, $id)
@@ -50,7 +50,7 @@ class SiteController extends Controller
         ]);
         $validated['is_active'] = $request->has('is_active');
         $site->update($validated);
-        return redirect()->route('sites.index')->with('success', 'Site updated successfully.');
+        return redirect()->route('dashboard.sites.index')->with('success', 'Site updated successfully.');
     }
 }
 
