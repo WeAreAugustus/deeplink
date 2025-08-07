@@ -45,6 +45,13 @@ class ShortLinkController extends Controller
 
         return redirect()->route('short-links.index')->with('success', 'Short link created!');
     }
+    public function destroy($id)
+    {
+        $link = ShortLink::findOrFail($id);
+        $link->delete();
+
+        return redirect()->route('short-links.index')->with('success', 'Short link deleted successfully.');
+    }
     public function generate(Request $request)
     {
         $request->validate([

@@ -25,6 +25,7 @@
                     <th>Item Type</th>
                     <th>Item Value</th>
                     <th>Created At</th>
+                    <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -58,6 +59,13 @@
                         <td>{{ $details['item_type'] ?? '—' }}</td>
                         <td>{{ $details['item_value'] ?? '—' }}</td>
                         <td>{{ $link->created_at->format('Y-m-d H:i') }}</td>
+                        <td>
+                            <form action="{{ route('short-links.destroy', $link->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this link?');">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-sm btn-danger">🗑️ Delete</button>
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>
@@ -67,20 +75,15 @@
 @endsection
 
 @push('scripts')
-    <!-- jQuery (required for DataTables) -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <!-- DataTables JS -->
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-
-    <!-- Initialize DataTables -->
     <script>
         $(document).ready(function () {
             $('#shortLinksTable').DataTable({
                 pageLength: 10,
                 order: [],
                 columnDefs: [
-                    { orderable: false, targets: [1] } // Disable sort on "Copy Link"
+                    { orderable: false, targets: [1, 7] } // Disable sort for "Copy Link" and "Actions"
                 ]
             });
         });
