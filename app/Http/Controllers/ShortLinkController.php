@@ -115,6 +115,11 @@ class ShortLinkController extends Controller
         if (!$link) {
             return response()->json(['success' => false,'message' => 'Code not found'], 404);
         }
+        $apiKey = $request->header('x-api-key');
+        $site = Site::where('api_key', $apiKey)->first();
+        if (!$apiKey || !$site) {
+            return response()->json(['success' => false,'message' => 'Unauthorized. Invalid API key.'], 401);
+        }
         return response()->json([
                 'success' => true,
                 'message' => 'Successfully code found.',
